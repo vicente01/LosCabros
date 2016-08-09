@@ -48,11 +48,11 @@ class Pais:
 class Menu:
     def __init__(self):
         self.opciones={
-                        "1": self.agregar_persona,"2": self.agregar_pais, "3": self.print_todo}
+                        "1": self.agregar_persona,"2": self.agregar_pais, "3": self.print_todo, "4": self.agregar_reportee}
         self.lista_paises = []
         
     def display_menu(self):
-        print(""" 1: agregar_persona al pais  \n 2: agregar_pais   \n 3: printear todo""")           
+        print(""" 1: agregar_persona al pais  \n 2: agregar_pais   \n 3: printear todo \n 4: agregar reporte a "x" persona """)           
         
     def run(self):
         
@@ -77,6 +77,20 @@ class Menu:
         input_usuario = input("ingrese pais que quiere agregar")
         nuevo_pais = Pais(input_usuario);
         self.lista_paises.append(nuevo_pais)
+
+    def agregar_reportee(self):
+        input_reporte_usuario=input("ingrese reportes y el usuario que quiere, separados por espacio")
+        lista=input_reporte_usuario.split()
+        print(lista)
+        for i in self.lista_paises:
+            for j in i.lista_personas:
+                if j.nombre == lista[6]:
+                    j.agregar_reporte(lista[0],lista[1],lista[2],lista[3],lista[4],lista[5])
+
+                    print (j.reporte)
+
+        
+        
 
     def print_todo(self):
         for i in self.lista_paises:
